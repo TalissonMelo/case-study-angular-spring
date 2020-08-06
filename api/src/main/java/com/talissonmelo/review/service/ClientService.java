@@ -17,4 +17,8 @@ public class ClientService {
 		return repository.findById(clientId).orElseThrow(
 				() -> new EntityNotFoundException("Cliente de ID : " + clientId + ", não encontrado."));
 	}
+	
+	public Client insert(Client client) {
+		return repository.save(client);
+	}
 }
