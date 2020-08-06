@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,5 +42,11 @@ public class ClientResource {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Client insertClient(@RequestBody Client client) {
 		return service.insert(client);
+	}
+	
+	@DeleteMapping(value = "/{clientId}")
+	public ResponseEntity<Void> delete(@PathVariable Long clientId){
+		service.deleteByClientId(clientId);
+		return ResponseEntity.noContent().build();
 	}
 }
