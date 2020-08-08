@@ -2,6 +2,8 @@ package com.talissonmelo.review.resource;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,7 +44,7 @@ public class ClientResource {
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Client insertClient(@RequestBody Client client) {
+	public Client insertClient(@Valid @RequestBody Client client) {
 		return service.insert(client);
 	}
 	
@@ -54,7 +56,7 @@ public class ClientResource {
 	
 	@PutMapping(value = "/{clientId}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void update(@PathVariable Long clientId, @RequestBody Client clientUpdate) {
+	public void update(@PathVariable Long clientId,@Valid @RequestBody Client clientUpdate) {
 		Client client = service.findById(clientId);
 		BeanUtils.copyProperties(clientUpdate, client, "id", "register");
 		repository.save(clientUpdate);

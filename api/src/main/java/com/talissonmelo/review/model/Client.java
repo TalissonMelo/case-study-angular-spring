@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -24,9 +28,12 @@ public class Client {
 	private Long id;
 	
 	@Column(nullable = false, length = 150)
+	@NotBlank(message = "{field.name}")
 	private String name;
 	
 	@Column(nullable = false, length = 11)
+	@NotNull(message = "{field.cpf}")
+	@CPF(message = "{field.cpf.invalido}")
 	private String cpf;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
