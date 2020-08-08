@@ -22,18 +22,18 @@ public class ApiExceptionHandler {
 	public ResponseEntity<?> entityNotFound(EntityNotFoundException ex, WebRequest request) {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
 	}
-	
+
 	@ExceptionHandler(DataViolationException.class)
 	public ResponseEntity<?> dataEntity(DataViolationException ex, WebRequest request) {
 		return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
 	}
-	
+
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<?> data(DataIntegrityViolationException ex, WebRequest request) {
 		String msg = "Error ao Adicionar Dados, Verifique CPF apenas número e nome completo.";
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(msg);
 	}
-	
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<?> validation(MethodArgumentNotValidException ex){
 		BindingResult bindingResult = ex.getBindingResult();
