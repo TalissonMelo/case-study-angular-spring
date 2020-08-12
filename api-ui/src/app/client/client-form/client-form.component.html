@@ -3,19 +3,20 @@
     <li class="breadcrumb-item active">Cadastro de Clientes</li>
 </ol>
 <div class="container">
-    {{this.client.name}} <!-- DATA-BINDING do component para o html-->
     <form>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>ID:</label>
-                    <input type="text" class="form-control"  disabled="true"/>
+                    <input type="text" class="form-control" name="id"
+                        [ngModel]="client.id" disabled="true"/>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Data Cadastro:</label>
-                    <input type="text" class="form-control" disabled="true" [value]="name"/> <!-- PROPERTY-BINDING do component para o html--> 
+                    <input type="text" class="form-control" name="register"
+                     [ngModel]="client.register" disabled="true" /> 
                 </div>
             </div>
         </div>
@@ -23,13 +24,15 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Nome Cliente:</label>
-                    <input type="text" class="form-control" placeholder="Digite seu nome completo."/>
+                    <input type="text" class="form-control" 
+                        [(ngModel)]="client.name" name="name" /> <!-- Two-way data-binding FormsModule --> 
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>CPF:</label>
-                    <input type="text" class="form-control" placeholder="Digite seu CPF" />
+                    <input type="text" class="form-control"
+                    [(ngModel)]="client.cpf" name="cpf" />
                 </div>
             </div>
         </div>
