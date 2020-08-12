@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Client } from './client/model/Client';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { Client } from './client/model/Client';
 
 export class ClientService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   findByClient(): Client{
     let client : Client = new Client()
