@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TemplateModule } from './template/template.module';
 import { ClientModule } from './client/client.module'
+import { ClientService } from './client.service'
 import { HomeComponent } from './home/home.component'
 
 @NgModule({
@@ -18,7 +19,9 @@ import { HomeComponent } from './home/home.component'
     AppRoutingModule,
     ClientModule
   ],
-  providers: [],
+  providers: [
+    ClientService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
