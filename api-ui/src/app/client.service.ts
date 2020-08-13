@@ -15,10 +15,7 @@ export class ClientService {
     return this.http.post<Client>('http://localhost:8080/clients', client);
   }
 
-  findByClient(): Client{
-    let client : Client = new Client()
-    client.name = "Talisson Melo"
-    client.cpf = '123456789'
-    return client;
+  findAllClient(): Observable<Client[]>{
+    return this.http.get<Client[]>('http://localhost:8080/clients');
   }
 }
