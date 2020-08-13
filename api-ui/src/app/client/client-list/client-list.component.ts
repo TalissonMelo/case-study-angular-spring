@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from '../model/Client';
 import { ClientService } from 'src/app/client.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-list',
@@ -11,7 +12,8 @@ export class ClientListComponent implements OnInit {
 
   clients : Client[] = []
 
-  constructor( private service: ClientService) { }
+  constructor( private service: ClientService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.service.findAllClient().subscribe(response =>  {
@@ -19,4 +21,7 @@ export class ClientListComponent implements OnInit {
     });
   }
 
+  newClient(){
+    this.router.navigate(['/clients-form'])
+  }
 }
