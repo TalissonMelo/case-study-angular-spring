@@ -22,8 +22,11 @@ export class ClientFormComponent implements OnInit {
 
   onSubmit() {
     this.service.save(this.client).subscribe(client => {
+      this.errors = []
       this.success = true;
+      this.client = client;
     }, errorResponse => {
+      this.success = false
       this.errors = errorResponse.error.messages
     })
 }
