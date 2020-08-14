@@ -5,6 +5,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <div *ngIf="messageSuccess" class="alert alert-success" role="alert">
+                {{ messageSuccess }}
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="messageError">
+                {{messageError}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <button class="btn btn-warning" (click)="newClient()">
                 <i class="fa fa-plus"></i> Cadastrar Cliente</button>
         </div>
@@ -31,8 +41,8 @@
                         <td>
                             <button class="btn btn-warning" [routerLink]="['/clients-form' , client.id]"><i
                                     class="fas fa-edit"></i> Editar</button>
-                            <button class="btn btn-danger ml-1" (click)="initialDelete(client)" 
-                            data-toggle="modal" data-target="#modalDelete">
+                            <button class="btn btn-danger ml-1" (click)="initialDelete(client)" data-toggle="modal"
+                                data-target="#modalDelete">
                                 <i class="fas fa-trash-alt"></i> Deletar</button>
                         </td>
                     </tr>
@@ -50,8 +60,10 @@
                     Realmente Deseja Deletar o Cliente : <strong> {{ client.name}} </strong> ??.
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger"><i class="fa-trash-alt"></i> Confirmar Deleção</button>
-                    <button class="btn btn-success ml-1" data-dismiss="modal"><i class="fa fa-sync-alt"></i> Cancelar Deleção</button>
+                    <button class="btn btn-danger" (click)="deleteClient()" data-dismiss="modal"><i
+                            class="fa-trash-alt"></i> Confirmar Deleção</button>
+                    <button class="btn btn-success ml-1" data-dismiss="modal"><i class="fa fa-sync-alt"></i> Cancelar
+                        Deleção</button>
                 </div>
             </div>
         </div>
