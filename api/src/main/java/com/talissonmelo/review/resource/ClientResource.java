@@ -60,7 +60,7 @@ public class ClientResource {
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void update(@PathVariable Long clientId,@Valid @RequestBody Client clientUpdate) {
 		Client client = service.findById(clientId);
-		BeanUtils.copyProperties(clientUpdate, client, "id", "register");
-		repository.save(clientUpdate);
+		BeanUtils.copyProperties(client, clientUpdate, "id", "name", "cpf");
+		service.insert(clientUpdate);
 	}
 }

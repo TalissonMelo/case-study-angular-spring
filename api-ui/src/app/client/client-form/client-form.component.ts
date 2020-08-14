@@ -22,22 +22,39 @@ export class ClientFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.activatedRoute.params['id']) {
-      this.service.findById(this.activatedRoute.snapshot.params['id'])
+    if (this.activatedRoute.snapshot.params['id']) {
+
+      this.id = this.activatedRoute.snapshot.params['id']
+
+      this.service.findById(this.id)
         .subscribe(response => this.client = response,
           error => this.errors = error);
     }
   }
 
   onSubmit() {
-    this.service.save(this.client).subscribe(client => {
-      this.errors = []
-      this.success = true;
-      this.client = client;
-    }, errorResponse => {
-      this.success = false
-      this.errors = errorResponse.error.messages
-    })
+
+    if (this.id) {
+      this.client.register = null
+      this.service.updateClient(this.id, this.client)
+        .subscribe(response => {
+          this.errors = []
+          this.success = true;
+        }, error => {
+          this.success = false
+          this.errors = error.error.messages
+        })
+
+    } else {
+      this.service.save(this.client).subscribe(client => {
+        this.errors = []
+        this.success = true;
+        this.client = client;
+      }, errorResponse => {
+        this.success = false
+        this.errors = errorResponse.error.messages
+      })
+    }
   }
 
 }
