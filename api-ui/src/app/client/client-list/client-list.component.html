@@ -29,12 +29,31 @@
                         <td>{{ client.cpf}}</td>
                         <td>{{ client.register}}</td>
                         <td>
-                            <button class="btn btn-warning"  [routerLink]="['/clients-form' , client.id]"><i class="fas fa-edit"></i> Editar</button>
-                            <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Deletar</button>
+                            <button class="btn btn-warning" [routerLink]="['/clients-form' , client.id]"><i
+                                    class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-danger ml-1" (click)="initialDelete(client)" 
+                            data-toggle="modal" data-target="#modalDelete">
+                                <i class="fas fa-trash-alt"></i> Deletar</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div id="modalDelete" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Confirmar Deleção</h4>
+                </div>
+                <div class="modal-body" *ngIf="client">
+                    Realmente Deseja Deletar o Cliente : <strong> {{ client.name}} </strong> ??.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger"><i class="fa-trash-alt"></i> Confirmar Deleção</button>
+                    <button class="btn btn-success ml-1" data-dismiss="modal"><i class="fa fa-sync-alt"></i> Cancelar Deleção</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
