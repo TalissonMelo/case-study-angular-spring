@@ -22,10 +22,8 @@ export class ClientFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let params = this.activatedRoute.params
-    if (params && params.value && params.value.id) {
-
-      this.service.findById(params.value.id)
+    if (this.activatedRoute.params['id']) {
+      this.service.findById(this.activatedRoute.snapshot.params['id'])
         .subscribe(response => this.client = response,
           error => this.errors = error);
     }
