@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { TemplateModule } from './template/template.module';
 import { ClientModule } from './client/client.module'
+import {OrderServiceModule} from './order-service/order-service.module'
 import { ClientService } from './client.service'
 import { HomeComponent } from './home/home.component'
 
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component'
     HttpClientModule,
     TemplateModule,
     AppRoutingModule,
-    ClientModule    
+    ClientModule,
+    OrderServiceModule    
   ],
   providers: [
     ClientService
