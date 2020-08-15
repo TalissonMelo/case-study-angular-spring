@@ -1,7 +1,7 @@
 package com.talissonmelo.review.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -35,5 +37,7 @@ public class OrderService {
 
 	private BigDecimal price;
 
-	private LocalDateTime register;
+
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private LocalDate register;
 }
