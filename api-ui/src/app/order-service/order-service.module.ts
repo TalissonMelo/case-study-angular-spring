@@ -10,7 +10,6 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    
     OrderServiceFormComponent,
     OrderServiceListComponent],
   imports: [

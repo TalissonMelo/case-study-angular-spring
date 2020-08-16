@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/app/client/model/Client';
 import { ClientService } from 'src/app/client.service';
+import { OrderService } from '../order.service'
 
 @Component({
   selector: 'app-order-service-form',
@@ -9,15 +10,17 @@ import { ClientService } from 'src/app/client.service';
 })
 export class OrderServiceFormComponent implements OnInit {
 
-  clients : Client[] = []
+  clients: Client[] = []
+  orderService: OrderService
 
-  constructor(private cleintService : ClientService) { }
+  constructor(private cleintService: ClientService) { }
 
   ngOnInit(): void {
     this.cleintService.findAllClient().subscribe(response => this.clients = response);
+    this.orderService = new OrderService();
   }
 
-  onSubmit(){
-    console.log()
+  onSubmit() {
+    console.log(this.orderService)
   }
 }
