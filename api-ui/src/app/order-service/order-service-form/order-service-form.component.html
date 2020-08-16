@@ -1,1 +1,19 @@
-<p>order-service-form works!</p>
+<h1 class="mt-4 text-center">Ordem de Serviço</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Cadastro de Serviços</li>
+</ol>
+<div class="container">
+    <form #form="ngForm" (submit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Cliente</label>
+                    <select class="form-control">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let client of clients" [ngValue]="client.id">{{ client.name }} </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

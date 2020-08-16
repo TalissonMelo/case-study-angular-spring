@@ -19,6 +19,18 @@
                         <a class="nav-link" [routerLink]="['/clients-form']">Cadastro Clientes</a>
                         <a class="nav-link" [routerLink]="['/clients-view']">Visualizar Clientes</a></nav>
                 </div>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="false" aria-controls="collapsePages">
+                    <div class="sb-nav-link-icon"><i class="fas fa-money-check-alt"></i></div>
+                    Serviços
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        <a class="nav-link" [routerLink]="['/order-service-form']">Cadastro Serviços</a>
+                        <a class="nav-link" [routerLink]="['/order-service-list']">Serviços Prestados</a>
+                    </nav>
+                </div>
             </div>
         </div>
         <div class="sb-sidenav-footer text-center">
