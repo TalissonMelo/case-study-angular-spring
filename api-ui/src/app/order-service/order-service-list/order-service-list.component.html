@@ -1,1 +1,31 @@
-<p>order-service-list works!</p>
+<h1 class="mt-4 text-center">Consulta de Serviço</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consultar Serviços</li>
+</ol>
+<div class="containter">
+    <form #fomr="ngForm" (submit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-6">
+                <label>Nome do Cliente</label>
+                <input type="text" name="name" [(ngModel)]="name" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label for="inputMonth">Mês</label>
+                <select [(ngModel)]="month" class="form-control" name="month">
+                    <option value="">Selecione...</option>
+                    <option *ngFor="let month of months" [value]="month">
+                        {{ month  }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-search"></i> Consultar Serviço
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderServiceListComponent implements OnInit {
 
-  constructor() { }
+  name: string
+  months: number[]
+  month: number
+
+  constructor() {
+    this.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  }
 
   ngOnInit(): void {
   }
 
+  onSubmit() {
+    console.log(this.name, this.month)
+  }
 }
