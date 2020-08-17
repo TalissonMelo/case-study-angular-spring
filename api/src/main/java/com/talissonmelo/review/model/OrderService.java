@@ -37,7 +37,6 @@ public class OrderService {
 
 	private BigDecimal price;
 
-
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate register;
 }

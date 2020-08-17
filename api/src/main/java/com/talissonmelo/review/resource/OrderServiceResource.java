@@ -2,6 +2,8 @@ package com.talissonmelo.review.resource;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +40,7 @@ public class OrderServiceResource {
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ResponseEntity<OrderService> insert(@RequestBody OrderServiceDTO dto) {
+	public ResponseEntity<OrderService> insert(@Valid @RequestBody OrderServiceDTO dto) {
 		OrderService orderService = service.toDto(dto);
 		orderService = service.insert(orderService);
 		return ResponseEntity.ok().body(orderService);

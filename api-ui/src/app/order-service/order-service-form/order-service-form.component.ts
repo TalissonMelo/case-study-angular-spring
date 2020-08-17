@@ -12,7 +12,9 @@ import { OrderServiceService } from 'src/app/order-service.service';
 export class OrderServiceFormComponent implements OnInit {
 
   clients: Client[] = []
+  errors: string[]
   orderService: OrderService
+  success: boolean = false
 
   constructor(private cleintService: ClientService,
     private service: OrderServiceService) { }
@@ -23,6 +25,14 @@ export class OrderServiceFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.insertOrderService(this.orderService).subscribe(response => console.log(response));
+    this.service.insertOrderService(this.orderService).subscribe(response => {
+      this.success = true
+      this.errors = null
+      this.orderService = new OrderService();
+    }, errorResponse => {
+      this.errors = errorResponse.error.messages
+      this.success = false
+    });
   }
+
 }

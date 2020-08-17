@@ -6,6 +6,16 @@
     <form #form="ngForm" (submit)="onSubmit()">
         <div class="row">
             <div class="col-md-12">
+                <div *ngIf="success" class="alert alert-success" role="alert">
+                    Serviço cadastrado com sucesso!.
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+                    {{error}}
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label>Cliente</label>
                     <select class="form-control" [(ngModel)]="orderService.clientId"
