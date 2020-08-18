@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderServiceSearch } from './order-service-search'
+import { OrderServiceService } from 'src/app/order-service.service';
 
 @Component({
   selector: 'app-order-service-list',
@@ -10,8 +12,9 @@ export class OrderServiceListComponent implements OnInit {
   name: string
   months: number[]
   month: number
+  list: OrderServiceSearch[]
 
-  constructor() {
+  constructor(private service: OrderServiceService) {
     this.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   }
 
@@ -19,6 +22,7 @@ export class OrderServiceListComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.name, this.month)
+    this.service.findAll(this.name, this.month).subscribe(response => this.list = response);
+    console.log(this.list);
   }
 }
