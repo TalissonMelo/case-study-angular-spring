@@ -22,8 +22,8 @@ export class OrderServiceService {
 
     const httpParams = new HttpParams()
       .set("name", name)
-      .set("month", month.toString())
-    
+      .set("month", month ? month.toString() : '')
+
     const url = this.url + '?' + httpParams.toString();
     return this.http.get<any>(url);
   }

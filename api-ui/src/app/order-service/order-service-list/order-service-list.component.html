@@ -6,7 +6,7 @@
     <form #fomr="ngForm" (submit)="onSubmit()">
         <div class="row">
             <div class="col-md-6">
-                <label>Nome do Cliente</label>
+                <label>Nome Do Cliente</label>
                 <input type="text" name="name" [(ngModel)]="name" class="form-control" />
             </div>
             <div class="col-md-6">
@@ -28,4 +28,32 @@
             </div>
         </div>
     </form>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-warning text-center" role="alert" *ngIf="message">
+                {{message}}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Cadastro</th>
+                        <th>Preço</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let service of list">
+                        <td> {{ service.client.name}}</td>
+                        <td> {{ service.register}}</td>
+                        <td> {{ service.price | currency: 'BRL': true }}</td>
+                        <td> {{ service.description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

@@ -10,6 +10,7 @@ import { OrderServiceService } from 'src/app/order-service.service';
 export class OrderServiceListComponent implements OnInit {
 
   name: string
+  message: string
   months: number[]
   month: number
   list: OrderServiceSearch[]
@@ -22,7 +23,13 @@ export class OrderServiceListComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.findAll(this.name, this.month).subscribe(response => this.list = response);
-    console.log(this.list);
+    this.service.findAll(this.name, this.month).subscribe(response => {
+      this.list = response;
+      if (this.list.length <= 0) {
+        this.message = "Nenhum registro encontrado. Tente novamente preenchendo os campos NOME DO CLIENTE e MES."
+      } else {
+        this.message = null
+      }
+    });
   }
 }
