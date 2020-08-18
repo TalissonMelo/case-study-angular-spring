@@ -8,10 +8,10 @@
             <div class="col-md-12">
                 <div *ngIf="success" class="alert alert-success" role="alert">
                     Serviço cadastrado com sucesso!.
-                  </div>
-                  <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+                </div>
+                <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
                     {{error}}
-                  </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -50,9 +50,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <button type="submit" class="btn btn-success">
                     <i class="fa fa-save"></i> Salvar
+                </button>
+                <button type="button" [routerLink]="['/order-service-list']" class="btn btn-primary ml-2">
+                    Consultar Serviços  <i class="fa fa-arrow-alt-circle-right"></i>
                 </button>
             </div>
         </div>
