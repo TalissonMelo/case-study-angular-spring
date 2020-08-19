@@ -39,7 +39,7 @@
                         <td>{{ client.cpf}}</td>
                         <td>{{ client.register}}</td>
                         <td>
-                            <button class="btn btn-warning" [routerLink]="['/clients-form' , client.id]"><i
+                            <button class="btn btn-warning" [routerLink]="['/clients/form' , client.id]"><i
                                     class="fas fa-edit"></i> Editar</button>
                             <button class="btn btn-danger ml-1" (click)="initialDelete(client)" data-toggle="modal"
                                 data-target="#modalDelete">
