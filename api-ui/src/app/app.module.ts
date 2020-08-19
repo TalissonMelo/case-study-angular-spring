@@ -9,12 +9,15 @@ import { ClientModule } from './client/client.module'
 import { OrderServiceModule } from './order-service/order-service.module'
 import { ClientService } from './client.service'
 import { OrderServiceService } from './order-service.service'
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,8 @@ import { HomeComponent } from './home/home.component'
     TemplateModule,
     AppRoutingModule,
     ClientModule,
-    OrderServiceModule
+    OrderServiceModule,
+    FormsModule
   ],
   providers: [
     ClientService,
