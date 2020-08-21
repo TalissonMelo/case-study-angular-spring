@@ -1,5 +1,7 @@
 package com.talissonmelo.review.resource;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +22,7 @@ public class UserResource {
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public void insertUser(@RequestBody User user) {
+	public void insertUser(@Valid @RequestBody User user) {
 		service.insert(user);
 	}
 }
