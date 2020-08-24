@@ -16,7 +16,7 @@ import com.talissonmelo.review.service.UserService;
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
-	
+
 	@Autowired
 	private UserService service;
 

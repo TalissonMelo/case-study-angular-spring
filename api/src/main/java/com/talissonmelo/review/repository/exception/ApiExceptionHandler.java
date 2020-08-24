@@ -14,6 +14,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.talissonmelo.review.service.exception.DataViolationException;
 import com.talissonmelo.review.service.exception.EntityNotFoundException;
+import com.talissonmelo.review.service.exception.UserExistsException;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
@@ -31,6 +32,12 @@ public class ApiExceptionHandler {
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<?> data(DataIntegrityViolationException ex, WebRequest request) {
 		String msg = "Error ao Adicionar Dados, Verifique CPF apenas número e nome completo.";
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(msg);
+	}
+	
+	@ExceptionHandler(UserExistsException.class)
+	public ResponseEntity<?> data(UserExistsException ex, WebRequest request) {
+		String msg = ex.getMessage();
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(msg);
 	}
 
