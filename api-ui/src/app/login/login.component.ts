@@ -12,36 +12,39 @@ export class LoginComponent {
 
   username: string
   password: string
-  loginError : boolean
-  insert : boolean
+  insert: boolean
   messageSuccess: string
+  errors: string[]
 
   constructor(private router: Router,
     private authService: AuthService) { }
 
-  onSubmit(){
-   this.router.navigate(['/home'])
+  onSubmit() {
+    this.router.navigate(['/home'])
   }
 
-  insertUser(event){
+  insertUser(event) {
     event.preventDefault()
     this.insert = true
   }
 
-  cancelInsert(){
+  cancelInsert() {
     this.insert = false
   }
 
-  save(){
-    const user : User = new User();
+  save() {
+    const user: User = new User();
     user.username = this.username;
     user.password = this.password;
     this.authService.save(user).subscribe(response => {
       this.messageSuccess = "Cadastro realizado com sucesso! Efetue o Login";
-      this.loginError = false;
+      this.errors = null
     }, error => {
-      this.loginError = true;
       this.messageSuccess = null
+      if (error.error.messages) {
+        return this.errors = error.error.messages
+      }
+      this.errors = ["Usuário já Cadastrado."]
     })
   }
 
