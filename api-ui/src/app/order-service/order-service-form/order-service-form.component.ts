@@ -6,8 +6,7 @@ import { OrderServiceService } from 'src/app/order-service.service';
 
 @Component({
   selector: 'app-order-service-form',
-  templateUrl: './order-service-form.component.html',
-  styleUrls: ['./order-service-form.component.css']
+  templateUrl: './order-service-form.component.html'
 })
 export class OrderServiceFormComponent implements OnInit {
 

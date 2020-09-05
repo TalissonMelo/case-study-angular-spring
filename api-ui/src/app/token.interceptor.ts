@@ -16,7 +16,9 @@ export class TokenInterceptor implements HttpInterceptor {
 
     let tokenString = localStorage.getItem("access_token")
 
-    if (tokenString) {
+    let url = request.url;
+
+    if (tokenString && !url.endsWith('/oauth/token')) {
       let token = JSON.parse(tokenString)
       let jwt = token.access_token
       request = request.clone({

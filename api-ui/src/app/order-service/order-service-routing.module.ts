@@ -3,10 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { OrderServiceFormComponent } from './order-service-form/order-service-form.component';
 import { OrderServiceListComponent } from './order-service-list/order-service-list.component';
 import { LayoutComponent } from '../layout/layout.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
   {
-    path: 'order-service', component: LayoutComponent, children: [
+    path: 'order-service', component: LayoutComponent, canActivate: [AuthGuard], children: [
       { path: 'form', component: OrderServiceFormComponent },
       { path: 'list', component: OrderServiceListComponent },
       {path: '', redirectTo: '/order-service/list', pathMatch: 'full'}

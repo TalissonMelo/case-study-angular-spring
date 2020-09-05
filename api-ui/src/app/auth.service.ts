@@ -55,4 +55,18 @@ export class AuthService {
 
     return this.http.post(this.tokenUrl, params.toString(), { headers });
   }
+
+  finalizeSession(){
+    localStorage.removeItem('access_token')
+  }
+
+  getUserAlthentication(){
+    let token = this.getToken();
+    if(token){
+      let user = this.jwtHelper.decodeToken(token).user_name
+      return user
+    }
+
+    return null
+  }
 }

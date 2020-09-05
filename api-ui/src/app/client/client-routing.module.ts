@@ -4,10 +4,11 @@ import { ClientFormComponent } from './client-form/client-form.component';
 import { ClientService } from '../client.service';
 import { ClientListComponent } from './client-list/client-list.component';
 import { LayoutComponent } from '../layout/layout.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
   {
-    path: 'clients', component: LayoutComponent, children: [
+    path: 'clients', component: LayoutComponent, canActivate: [AuthGuard], children: [
       { path: 'form', component: ClientFormComponent },
       { path: 'form/:id', component: ClientFormComponent },
       { path: 'view', component: ClientListComponent },
