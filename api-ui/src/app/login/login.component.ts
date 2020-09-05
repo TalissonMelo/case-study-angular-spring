@@ -21,7 +21,8 @@ export class LoginComponent {
 
   onSubmit() {
     this.authService.log(this.username, this.password).subscribe(response => {
-      console.log(response)
+      const access_token = JSON.stringify(response);
+      localStorage.setItem('access_token',access_token)
       this.router.navigate(['/home'])
     }, error => {
       this.errors = ['Usuário e/ou senha incorreta(s).'];
