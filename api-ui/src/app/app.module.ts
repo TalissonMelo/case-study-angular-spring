@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthService} from './auth.service'
 import { TokenInterceptor} from './token.interceptor'
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { TokenInterceptor} from './token.interceptor'
   providers: [
     ClientService,
     OrderServiceService,
+    AuthGuard,
     AuthService,{
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
