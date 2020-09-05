@@ -20,7 +20,13 @@ export class LoginComponent {
     private authService: AuthService) { }
 
   onSubmit() {
-    this.router.navigate(['/home'])
+    this.authService.log(this.username, this.password).subscribe(response => {
+      console.log(response)
+      this.router.navigate(['/home'])
+    }, error => {
+      this.errors = ['Usuário e/ou senha incorreta(s).'];
+    })
+   
   }
 
   insertUser(event) {
