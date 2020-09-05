@@ -19,12 +19,7 @@ export class ClientService {
   }
 
   findAllClient(): Observable<Client[]> {
-    let tokenString = localStorage.getItem("access_token")
-    let token = JSON.parse(tokenString)
-    let headers = {
-      'Authorization': 'Bearer ' + token.access_token
-    }
-    return this.http.get<Client[]>(`${this.url}/clients`, { headers });
+    return this.http.get<Client[]>(`${this.url}/clients`);
   }
 
   findById(id: number): Observable<Client> {
