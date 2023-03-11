@@ -18,11 +18,9 @@ public class UserService implements UserDetailsService {
 
 	public void insert(User user) {
 		boolean exist = repository.existsByUsername(user.getUsername());
-
 		if (exist) {
 			throw new UserExistsException(user.getUsername());
 		}
-
 		repository.save(user);
 	}
 

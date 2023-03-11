@@ -1,4 +1,4 @@
-package com.talissonmelo.review.model;
+package com.talissonmelo.review.model.order;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.talissonmelo.review.model.Client;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

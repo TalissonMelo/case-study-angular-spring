@@ -1,4 +1,4 @@
-package com.talissonmelo.review.config.security;
+package com.talissonmelo.review.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

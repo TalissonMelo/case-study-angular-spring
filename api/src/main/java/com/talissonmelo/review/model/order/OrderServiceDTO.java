@@ -1,4 +1,4 @@
-package com.talissonmelo.review.model.dto;
+package com.talissonmelo.review.model.order;
 
 import java.math.BigDecimal;
 
@@ -6,11 +6,13 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class OrderServiceDTO {
 
 	@NotBlank(message = "{field.description}")
